@@ -6216,6 +6216,15 @@ def test_classmethod_above_fixture_warning(pytester: Pytester) -> None:
     result.assert_outcomes(errors=1)
 
 
+def test_fixture_function_definition_exposed_in_public_api() -> None:
+    from _pytest.fixtures import FixtureFunctionDefinition
+    from pytest import FixtureFunctionDefinition as PublicFixtureFunctionDefinition
+
+    assert PublicFixtureFunctionDefinition is FixtureFunctionDefinition
+    assert pytest.FixtureFunctionDefinition is FixtureFunctionDefinition
+    assert "FixtureFunctionDefinition" in pytest.__all__
+
+
 @pytest.mark.filterwarnings(
     "default:fixture * is wrapped by @staticmethod*:pytest.PytestWarning"
 )

@@ -1,0 +1,1 @@
+The ``FixtureFunctionDefinition`` class is now available from the ``pytest`` package, so it can be used to annotate the result of ``pytest.fixture`` without importing from an internal module.
